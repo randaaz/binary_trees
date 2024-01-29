@@ -5,7 +5,7 @@
  *
  * Return: height of the tree
  */
-size_t b_t_h(const binary_tree_t *tree)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
 	size_t s = 0;
 	size_t m = 0;
@@ -18,8 +18,8 @@ size_t b_t_h(const binary_tree_t *tree)
 	{
 		if (tree)
 		{
-			s = tree->left ? 1 + b_t_h(tree->left) : 0;
-			m = tree->right ? 1 + b_t_h(tree->right) : 0;
+			s = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+			m = tree->right ? 1 + binary_tree_height(tree->right) : 0;
 		}
 		return ((s > m) ? s : m);
 	}
@@ -100,7 +100,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	}
 	else
 	{
-		he = b_t_h(tree);
+		he = binary_tree_height(tree);
 		head = NULL;
 		rec(&head, tree);
 		while (co <= he)
