@@ -1,11 +1,11 @@
 #include "binary_trees.h"
 
 /**
- * b_t_s - Measures the size of a binary tree.
+ * binary_tree_size - Measures the size of a binary tree.
  * @tree: A pointer to the root node of the tree to measure the size.
  * Return: The size of the tree.
  */
-size_t b_t_s(const binary_tree_t *tree)
+size_t binary_tree_size(const binary_tree_t *tree)
 {
 	if (tree == NULL)
 		return (0);
@@ -45,7 +45,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (0);
 
-	cnodes = b_t_s(tree);
+	cnodes = binary_tree_size(tree);
 
 	return (t_is_co(tree, 0, cnodes));
 }

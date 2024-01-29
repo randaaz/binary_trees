@@ -1,13 +1,13 @@
 #include "binary_trees.h"
 
 /**
- * b_t_h - Calculate the height of a binary tree
+ * binary_tree_height - Calculate the height of a binary tree
  * @tree: Pointer to the root node of the tree
  *
  * Return: Height of the tree
  */
 
-size_t b_t_h(const binary_tree_t *tree)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
 	size_t s = 0;
 	size_t m = 0;
@@ -20,8 +20,8 @@ size_t b_t_h(const binary_tree_t *tree)
 	{
 		if (tree)
 		{
-			s = tree->left ? 1 + b_t_h(tree->left) : 1;
-			m = tree->right ? 1 + b_t_h(tree->right) : 1;
+			s = tree->left ? 1 + binary_tree_height(tree->left) : 1;
+			m = tree->right ? 1 + binary_tree_height(tree->right) : 1;
 		}
 		return ((s > m) ? s : m);
 		}
@@ -45,8 +45,8 @@ int b_v(const binary_tree_t *tree, int lower, int high)
 		{
 			return (0);
 		}
-		h_l = b_t_h(tree->left);
-		h_r = b_t_h(tree->right);
+		h_l = binary_tree_height(tree->left);
+		h_r = binary_tree_height(tree->right);
 		bal = h_l > h_r ? h_l - h_r : h_r - h_l;
 		if (bal > 1)
 		{
