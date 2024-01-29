@@ -25,7 +25,7 @@ int t_is_co(const binary_tree_t *tree, int i, int cnodes)
 	if (tree == NULL)
 		return (1);
 
-	if (ii >= cnodes)
+	if (i >= cnodes)
 		return (0);
 
 	return (t_is_co(tree->left, (2 * i) + 1, cnodes) &&
