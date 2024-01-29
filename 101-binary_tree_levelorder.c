@@ -25,14 +25,14 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	}
 }
 /**
- * b_t_d - function to calculate the depth of a node in a binary tree
+ * binary_tree_depth - function to calculate the depth
  * @tree: pointer to the node
  *
  * Return: depth of the node
  */
-size_t b_t_d(const binary_tree_t *tree)
+size_t binary_tree_depth(const binary_tree_t *tree)
 {
-	return ((tree && tree->parent) ? 1 + b_t_d(tree->parent) : 0);
+	return ((tree && tree->parent) ? 1 + binary_tree_depth(tree->parent) : 0);
 }
 /**
  * l_nd - function to create a new node for the linked list
@@ -78,7 +78,7 @@ void rec(link_t **head, const binary_tree_t *tree)
 
 	if (tree != NULL)
 	{
-		level = b_t_d(tree);
+		level = binary_tree_depth(tree);
 		l_nd(head, tree, level);
 		rec(head, tree->left);
 		rec(head, tree->right);
