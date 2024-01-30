@@ -5,19 +5,22 @@
  *
  * Return: number of leaf nodes, or 0 if tree is NULL
  */
+
 size_t binary_tree_leaves(const binary_tree_t *tree)
 {
-	size_t l = 0, s = 0, m = 0;
+	size_t s = 1;
+	size_t right = 0;
+	size_t lefttt = 0;
 
 	if (tree == NULL)
 	{
 		return (0);
 	}
-	else
+	if (tree->left == NULL && tree->right == NULL)
 	{
-		s = binary_tree_leaves(tree->left);
-		m = binary_tree_leaves(tree->right);
-		l = s + m;
-		return ((!s && !m) ? l + 1 : l + 0);
+		return (s);
 	}
+	right = binary_tree_leaves(tree->left);
+	lefttt = binary_tree_leaves(tree->right);
+	return (right + lefttt);
 }
