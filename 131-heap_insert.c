@@ -4,7 +4,7 @@
  * _he - Calculates the height of a binary tree.
  * @tree: Pointer to the root of the binary tree.
  *
- * Return: Height of the binary tree, or -1 if the tree is NULL.
+ * Return: Height of the binary tree, or -1 if the tree is NULL
  */
 
 int _he(const binary_tree_t *tree)
