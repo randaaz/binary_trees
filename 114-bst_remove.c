@@ -1,12 +1,13 @@
 #include "binary_trees.h"
 /**
- * successor - get the next successor i mean the min node in the right subtree
- * @node: tree to check
- * Return: the min value of this tree
+ * caliph - Finds the leftmost node in a binary tree
+ * @node: Pointer to the root of the tree
+ *
+ * Return: Value of the leftmost node
  */
-int successor(bst_t *node)
+int caliph(bst_t *node)
 {
-	int left = 0;
+	int l = 0;
 
 	if (node == NULL)
 	{
@@ -14,36 +15,36 @@ int successor(bst_t *node)
 	}
 	else
 	{
-		left = successor(node->left);
-		if (left == 0)
+		l = caliph(node->left);
+		if (l == 0)
 		{
 			return (node->n);
 		}
-		return (left);
+		return (l);
 	}
 
 }
 /**
- * two_children - function that gets the next successor using the min
- * value in the right subtree, and then replace the node value for
- * this successor
- * @root: node tat has two children
- * Return: the value found
+ * t_ch - Updates the value of a node with the value of its in-order successor
+ * @root: Pointer to the root of the tree
+ *
+ * Return: New value of the node
  */
-int two_children(bst_t *root)
+int t_ch(bst_t *root)
 {
-	int new_value = 0;
+	int n_v = 0;
 
-	new_value = successor(root->right);
-	root->n = new_value;
-	return (new_value);
+	n_v = caliph(root->right);
+	root->n = n_v;
+	return (n_v);
 }
 /**
- *remove_type - function that removes a node depending of its children
- *@root: node to remove
- *Return: 0 if it has no children or other value if it has
+ * rm_ty - Removes a node with a given value from a BST
+ * @root: Pointer to the root of the tree
+ *
+ * Return: 0
  */
-int remove_type(bst_t *root)
+int  rm_ty(bst_t *root)
 {
 	if (!root->left && !root->right)
 	{
@@ -76,17 +77,18 @@ int remove_type(bst_t *root)
 		return (0);
 	}
 	else
-		return (two_children(root));
+		return (t_ch(root));
 }
 /**
- * bst_remove - remove a node from a BST tree
- * @root: root of the tree
- * @value: node with this value to remove
- * Return: the tree changed
+ * bst_remove - Removes a node with a given value from a BST
+ * @root: Pointer to the root of the tree
+ * @value: Value to remove from the tree
+ *
+ * Return: Pointer to the new root of the tree
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-	int type = 0;
+	int ty = 0;
 
 	if (root == NULL)
 		return (NULL);
@@ -96,9 +98,9 @@ bst_t *bst_remove(bst_t *root, int value)
 		bst_remove(root->right, value);
 	else if (value == root->n)
 	{
-		type = remove_type(root);
-		if (type != 0)
-			bst_remove(root->right, type);
+		ty = rm_ty(root);
+		if (ty != 0)
+			bst_remove(root->right, ty);
 	}
 	else
 		return (NULL);
