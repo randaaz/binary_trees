@@ -5,7 +5,7 @@
  * @tree: Pointer to the root of the AVL tree.
  * @parent: Pointer to the parent of the current node.
  * @w: Pointer to the newly inserted node.
- * @nv: Value to insert into the AVL tree.
+ * @nv: Value to insert into the AVL tree
  *
  * Return: Pointer to the newly inserted node or NULL on failure.
  */
