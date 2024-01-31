@@ -3,7 +3,7 @@
 /**
  * array_to_avl - Build an AVL tree from an array of integers
  * @array: Pointer to the array of integers
- * @size: Number of elements in the array.
+ * @size: Number of elements in the array
  *
  * Return: Pointer to the root of the created AVL tree, or NULL on failure
  */
